@@ -41,7 +41,7 @@ async def get_current_user(session: str = Depends(cookie_sec)):
     return data[0][0]
 
 
-@users_router.get("/login_ui")
+@users_router.get("/test_login_ui")
 def login_page():
     return HTMLResponse(
         """

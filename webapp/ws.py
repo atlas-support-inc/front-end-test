@@ -88,5 +88,5 @@ html = """
 
 
 @ws_router.get("/test_ws")
-async def get():
+async def test_ws():
     return HTMLResponse(html)

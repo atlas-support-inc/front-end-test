@@ -26,7 +26,7 @@ class Chat(BaseModel):
 
 
 @chat_router.get("/chat/list", response_model=List[Chat])
-async def users(user_id: str = Depends(get_current_user)):
+async def chats(user_id: str = Depends(get_current_user)):
     query = chat_db.select().filter(
         or_(chat_db.c.from_user_id == user_id,
             chat_db.c.to_user_id == user_id))
@@ -34,7 +34,7 @@ async def users(user_id: str = Depends(get_current_user)):
 
 
 @chat_router.post("/chat/create")
-async def chat(to_user_id: int, message: str, user_id: str = Depends(get_current_user)):
+async def create_chat(to_user_id: int, message: str, user_id: str = Depends(get_current_user)):
     query = chat_db.insert().values(
         from_user_id=user_id,
         to_user_id=to_user_id,
