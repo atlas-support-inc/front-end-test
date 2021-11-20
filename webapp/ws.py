@@ -32,10 +32,11 @@ class ConnectionManager:
         )
 
     async def send_new_chat(self, user_id):
-        websocket = self.active_connections[user_id]
-        await websocket.send_text(json.dumps({
-            'new_chat': True,
-        }))
+        if self.active_connections.get(user_id):
+            websocket = self.active_connections[user_id]
+            await websocket.send_text(json.dumps({
+                'new_chat': True,
+            }))
 
 
 manager = ConnectionManager()
