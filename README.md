@@ -16,3 +16,4 @@ cd webapp
 uvicorn main:app --reload
 ```
 
+To view all the API, got to http://localhost:8000/docs#/
