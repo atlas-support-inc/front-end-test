@@ -74,8 +74,8 @@ async def login(response: Response, username: str = Form(...), password: str = F
     query = user_db.select()
     users = await database.fetch_all(query)
     user_dict = {}
-    for (id, username, password) in users:
-        user_dict[username] = password
+    for (id, _username, password) in users:
+        user_dict[_username] = password
 
     if not user_dict.get(username):
         raise HTTPException(
